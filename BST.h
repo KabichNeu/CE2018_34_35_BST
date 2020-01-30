@@ -1,4 +1,5 @@
-#inlcude<iostream> 
+#ifndef BST_H
+#define BST_H 
 
 
 
@@ -10,3 +11,5 @@ public:
 		virtual bool search(int data)=0;
 		
 };
+
+#endif
