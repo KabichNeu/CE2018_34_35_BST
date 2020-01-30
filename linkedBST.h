@@ -12,4 +12,6 @@ class LinkedBST: public BST{
 		void add(int data);
 		void preordertraversal();
 		bool search(int data);
+		bool search(int data);
 };
+//i am a programmer
