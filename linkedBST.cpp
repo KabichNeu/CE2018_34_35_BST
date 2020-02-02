@@ -40,44 +40,57 @@ void LinkedBST::add(Node* root,int data){
 
 
 bool LinkedBST::search(int data){
-	return;
 }
 
 bool LinkedBST::search(Node* root,int data){
 	if(root->data == 0){
-		return False;
+		return 0;
 	}
-	elseif{
+	else{
 		if(data<root->data){
 			search(root->left,data);
 		}
-		elseif(data>root->data){
+		else if(data>root->data){
 			search(root->right,data);
 		}
-		elseif(data==root->data){
+		else if(data==root->data){
 			std::cout<<data<<"found in "<<root<<std::endl;
-			return True;
+			return true;
 
 		}
 		else{
-			std::cout<<data<<" Not found"<<endl;
-			return False;
+			std::cout<<data<<" Not found"<<std::endl;
+			return false;
 		}
 	}
 }
 
 void LinkedBST::preordertraversal(){
-	return;
-}
-void LinkedBST::preordertraversal(Node* root){
-	if(root->data==0){
-		return;
-	}
-	
-	cout<<root->data<<endl;
-	preordertraversal(root->left);
-	preordertraversal(root->right);
-	
 }
 
+void LinkedBST::preordertraversal(Node* root){
+	if(root->data==0){}
+	
+	std::cout<<root->data<<std::endl;
+	preordertraversal(root->left);
+	preordertraversal(root->right);	
+}
+
+int main(){
+	LinkedBST temp;
+	temp.add(&temp.root,7);
+	temp.add(&temp.root,2);
+	temp.add(&temp.root,4);
+	temp.add(&temp.root,5);
+	temp.add(&temp.root,6);
+	temp.add(&temp.root,8);
+	temp.add(&temp.root,1);
+	temp.add(&temp.root,9);
+	std::cout<<"After pre-order traversal"<<std::endl;
+	temp.preordertraversal(&temp.root);
+	std::cout<<"For searching:"<<std::endl;
+	temp.search(4);
+	temp.search(3);
+	return 0;
+}
 

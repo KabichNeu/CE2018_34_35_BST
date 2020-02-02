@@ -21,9 +21,8 @@ class Node{
 };
 
 class LinkedBST: public BST{
-	private:
-		Node* root;
 	public:
+		Node root;
 		LinkedBST(){
 			root = 0;
 		}
