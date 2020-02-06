@@ -31,8 +31,8 @@ class LinkedBST: public BST{
 		void add(Node* root, int data);
 		void preordertraversal();
 		void preordertraversal(Node* root);		
-		bool search(int data);
-		bool search(Node* root,int data);
+		bool search(int targetkey);
+		bool search(Node* root,int targetkey);
 
 };
 

@@ -39,38 +39,42 @@ void LinkedBST::add(Node* root,int data){
 
 
 
-bool LinkedBST::search(int data){
+bool LinkedBST::search(int targetkey){
 }
 
-bool LinkedBST::search(Node* root,int data){
+bool LinkedBST::search(Node* root,int targetkey){
 	if(root->data == 0){
-		return 0;
+		std::cout<<"It is an empty tree"<<std::endl;
 	}
 	else{
-		if(data<root->data){
-			search(root->left,data);
-		}
-		else if(data>root->data){
-			search(root->right,data);
-		}
-		else if(data==root->data){
-			std::cout<<data<<"found in "<<root<<std::endl;
-			return true;
-
-		}
-		else{
-			std::cout<<data<<" Not found"<<std::endl;
-			return false;
-		}
-	}
+		Node *p=new Node();
+        p=root;
+        while(p){
+            if(targetkey>p->data){
+                p=p->right;
+            }
+            else if(targetkey<p->data){
+                p=p->left;
+            }
+            else if(targetkey==p->data){
+                std::cout<<targetkey<<" is in the tree"<<std::endl;
+                return 1;
+                
+            }
+            else{
+                std::cout<<targetkey<<" is not in the tree"<<std::endl;
+                return 0;
+            }
+			}
 }
 
 void LinkedBST::preordertraversal(){
 }
 
 void LinkedBST::preordertraversal(Node* root){
-	if(root->data==0){}
-	
+	if (!root) 
+		return; 
+			
 	std::cout<<root->data<<std::endl;
 	preordertraversal(root->left);
 	preordertraversal(root->right);	
@@ -89,6 +93,7 @@ int main(){
 	std::cout<<"After pre-order traversal"<<std::endl;
 	temp.preordertraversal(&temp.root);
 	std::cout<<"For searching:"<<std::endl;
+	
 	temp.search(4);
 	temp.search(3);
 	return 0;
