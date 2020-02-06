@@ -13,6 +13,9 @@ public:
 		
 		virtual int max_e()=0;
 		
+		virtual int delete()=0;
+		
+		
 };
 
 #endif
