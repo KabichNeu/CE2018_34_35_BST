@@ -1,38 +1,28 @@
+#include <iostream>
 #include "BST.h"
-#include<iostream>
 
-class Node{
-	public:
-	int data;
-	Node* left;
-	Node* right;
-	Node(){
-		data =0;
-		left = NULL;
-		right = NULL;
-	}
-	Node(int data){
-		this->data = data;
-		left = NULL;
-		right = NULL;
-	}
-
-	~Node(){}
+class node
+{
+public:
+    int data;
+    node* left ;
+    node* right;
+    node();
+    node(int);
+    ~node();
 };
 
-class LinkedBST: public BST{
-	public:
-		Node root;
-		LinkedBST(){
-			root = 0;
-		}
-		~LinkedBST(){}
-		void add(int data);
-		void add(Node* root, int data);
-		void preordertraversal();
-		void preordertraversal(Node* root);		
-		bool search(int data);
-		bool search(Node* root,int data);
 
+class LinkedBST:public BST{
+    
+    public:
+    node root;
+    LinkedBST();
+    ~LinkedBST();
+    void preorderTraversal(node *root);
+    void add(int data);
+    void add(node *root,int data);
+    bool search(int data);
+    bool search(node *root,int targetKey);
+    void inorderTraversal(node *root);
 };
-
