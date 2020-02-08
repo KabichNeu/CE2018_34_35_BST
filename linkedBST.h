@@ -27,4 +27,5 @@ class LinkedBST:public BST{
     void inorderTraversal(node *root);
     int min(node *root);
     int max(node *root);
+    void deleteBST(node *root,int dltkey);
 };
