@@ -25,6 +25,6 @@ class LinkedBST:public BST{
     bool search(int data);
     bool search(node *root,int targetKey);
     void inorderTraversal(node *root);
-    int min();
-    int max();
+    int min(node *root);
+    int max(node *root);
 };

@@ -110,6 +110,23 @@ void LinkedBST::inorderTraversal(node* root){
 	
 }  
 
+int LinkedBST::min(node *root){
+	node *p = new node();
+	p = root;
+	while(p->left != NULL){
+		p = p->left;
+	}
+	return p->data;
+}
+
+int LinkedBST::max(node *root){
+	node *t = new node();
+	t = root;
+	while(t->right != NULL){
+		t = t->right ;
+	}
+	return t->data;
+}
 
 
 int main(){
