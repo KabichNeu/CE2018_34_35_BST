@@ -128,9 +128,9 @@ int LinkedBST::max(node *root){
 	return t->data;
 }
 
-int linkedBST::deleteBST(node *root,int dltkey){
+void linkedBST::deleteBST(node *root,int dltkey){
 	if(root->data == NULL){
-		return 0;
+		return ;
 	}
 	if(dltkey<root->data){
 		return deleteBST(root->left,dltkey);
@@ -142,7 +142,7 @@ int linkedBST::deleteBST(node *root,int dltkey){
 		if(!root->left){
 			while(root!=NULL){
 				node *temp = new node();
-				temp = root->right->data;
+				temp->data = root->right->data;
 				root->right->data= root->data;
 				root->data=temp;
 				root = root->right;
@@ -151,14 +151,20 @@ int linkedBST::deleteBST(node *root,int dltkey){
 		else if(!root->right){
 			while(root!=NULL){
 				node *temp = new node();
-				temp = root->left->data;
+				temp->data = root->left->data;
 				root->left->data= root->data;
 				root->data=temp;
 				root = root->left;
 			}
 		}
 		else{
-			
+			while(root!=NULL){
+				node *temp = new node();
+				temp->data = root->left->data;
+				root->left->data= root->data;
+				root->data=temp->data;
+				root = root->left;
+			}			
 		}
 		
 	}
