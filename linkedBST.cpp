@@ -107,28 +107,27 @@ void LinkedBST::inorderTraversal(node* root){
 
 	inorderTraversal(root->right);
 
-<<<<<<< HEAD
 }
 
 int LinkedBST::min(node *root){
-	node *p = new node();
-	p = root;
-	while(p->left != NULL){
-		p = p->left;
+	if(!root->left){
+		return root->data;
 	}
-	return p->data;
+	else{
+		min(root->left);
+	}
 }
 
 int LinkedBST::max(node *root){
-	node *t = new node();
-	t = root;
-	while(t->right != NULL){
-		t = t->right ;
+	if(!root->right){
+		return root->data;
 	}
-	return t->data;
+	else{
+		max(root->right);
+	}
 }
 
-void linkedBST::deleteBST(node *root,int dltkey){
+void LinkedBST::deleteBST(node *root,int dltkey){
 	if(root->data == NULL){
 		return;
 	}
@@ -143,85 +142,31 @@ void linkedBST::deleteBST(node *root,int dltkey){
 			delete root;
 			root = NULL;
 		}
-		else if(root->left=NULL){
-			/*
-			while(root!=NULL){
-				node *temp = new node();
-				temp->data = root->right->data;
-				root->right->data= root->data;
-				root->data=temp;
-				root = root->right;
-			}
-			*/
-			node *temp = new node(root);
-			root = root->right;
-			delete temp;
+		else if(root->left==NULL){
+			node *temp = new node();
+			temp=root;
+			delete root;
+			root=temp->right;
 
 		}
-		else if(!root->right){
-			/*
-			while(root!=NULL){
-				node *temp = new node();
-				temp->data = root->left->data;
-				root->left->data= root->data;
-				root->data=temp;
-				root = root->left;
-			}
-			*/
-			node *temp = new node(root);
-			root = root->left;
-			delete temp;
+		else if(root->right==NULL){
+			node *temp = new node();
+			temp=root;
+			delete root;
+			root=temp->left;
 		}
 		else{
-			/*
-			while(root!=NULL){
-				node *temp = new node();
-				temp->data = root->left->data;
-				root->left->data= root->data;
-				root->data=temp->data;
-				root = root->left;
-			}
-			*/
-			node *temp = new node(root);
-			temp = min(root->right);
-			root->data = temp->data;
-			root->right=deleteBST(root->right,temp->data);
+			node *nodeToDelete=new node();
+			int largest=max(root->left);
+			nodeToDelete->data=largest;
+			root=nodeToDelete;
+			deleteBST(root->left,largest);
 		}
 
 	}
-=======
-bool LinkedBST::search(int targetkey){
-}
-
-bool LinkedBST::search(Node* root,int targetkey){
-	if(root->data == 0){
-		std::cout<<"It is an empty tree"<<std::endl;
-	}
-	else{
-		Node *p=new Node();
-        p=root;
-        while(p){
-            if(targetkey>p->data){
-                p=p->right;
-            }
-            else if(targetkey<p->data){
-                p=p->left;
-            }
-            else if(targetkey==p->data){
-                std::cout<<targetkey<<" is in the tree"<<std::endl;
-                return 1;
-                
-            }
-            else{
-                std::cout<<targetkey<<" is not in the tree"<<std::endl;
-                return 0;
-            }
-			}
->>>>>>> 7b3b956577ef9d310cefc495215bea34019253db
 }
 
 
-<<<<<<< HEAD
 
 int main(){
 	LinkedBST temp;
@@ -248,36 +193,12 @@ int main(){
 	cout<<"Enter a number you want to search  in the tree"<<endl;
 	cin>>number;
 	temp.search(&temp.root,number);
-
-
-
-=======
-void LinkedBST::preordertraversal(Node* root){
-	if (!root) 
-		return; 
-			
-	std::cout<<root->data<<std::endl;
-	preordertraversal(root->left);
-	preordertraversal(root->right);	
-}
-
-int main(){
-	LinkedBST temp;
-	temp.add(&temp.root,7);
-	temp.add(&temp.root,2);
-	temp.add(&temp.root,4);
-	temp.add(&temp.root,5);
-	temp.add(&temp.root,6);
-	temp.add(&temp.root,8);
-	temp.add(&temp.root,1);
-	temp.add(&temp.root,9);
-	std::cout<<"After pre-order traversal"<<std::endl;
-	temp.preordertraversal(&temp.root);
-	std::cout<<"For searching:"<<std::endl;
 	
-	temp.search(4);
-	temp.search(3);
-	return 0;
->>>>>>> 7b3b956577ef9d310cefc495215bea34019253db
+	temp.deleteBST(&temp.root,19);
+	cout<<"Enter a number you want to search  in the tree"<<endl;
+		cin>>number;
+	temp.search(&temp.root,number);
+
+
 }
 
