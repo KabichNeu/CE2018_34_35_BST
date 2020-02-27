@@ -13,6 +13,20 @@ public:
 };
 
 
+class LinkedBST: public BST{
+	public:
+		Node root;
+		LinkedBST(){
+			root = 0;
+		}
+		~LinkedBST(){}
+		void add(int data);
+		void add(Node* root, int data);
+		void preordertraversal();
+		void preordertraversal(Node* root);		
+		bool search(int targetkey);
+		bool search(Node* root,int targetkey);
+
 class LinkedBST:public BST{
     
     public:
